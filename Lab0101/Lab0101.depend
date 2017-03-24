@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1486453038 source:c:\bme\prog2\lab0101\main.c
+	<stdio.h>
+	"polinom.h"
+
+1486452626 c:\bme\prog2\lab0101\polinom.h
+
+1486452972 source:c:\bme\prog2\lab0101\polinom.c
+	"polinom.h"
+

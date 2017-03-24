@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1487253893 source:c:\bme\prog2\beugro03\amit svn-el leszedett\memtrace.cpp
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	<ctype.h>
+	"memtrace.h"
+
+1487253893 c:\bme\prog2\beugro03\amit svn-el leszedett\memtrace.h
+	<new>
+	<stdlib.h>
+	<iostream>
+	<fstream>
+
+1487454446 source:c:\bme\prog2\beugro03\amit svn-el leszedett\nem_oo.cpp
+	<string.h>
+	<math.h>
+	<iostream>
+	"nem_oo.h"
+
+1487253893 c:\bme\prog2\beugro03\amit svn-el leszedett\nem_oo.h
+	"memtrace.h"
+
+1487454420 source:c:\bme\prog2\beugro03\amit svn-el leszedett\nem_oo_teszt.cpp
+	<iostream>
+	<cstring>
+	<locale>
+	<windows.h>
+	"nem_oo.h"
+

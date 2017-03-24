@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1488702756 source:c:\bme\prog2\beugro05\memtrace.cpp
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	<ctype.h>
+	"memtrace.h"
+
+1488702756 c:\bme\prog2\beugro05\memtrace.h
+	<new>
+	<stdlib.h>
+	<iostream>
+
+1488703235 source:c:\bme\prog2\beugro05\vektormain.cpp
+	<iostream>
+	<ctime>
+	<iomanip>
+	"vektor.h"
+	"gtest_lite.h"
+
+1488703265 c:\bme\prog2\beugro05\vektor.h
+	"memtrace.h"
+	<cstdlib>
+
+1488702756 c:\bme\prog2\beugro05\gtest_lite.h
+	<cassert>
+	<cmath>
+	<cstring>
+	<limits>
+	<string>
+	<fstream>
+
+1488704923 source:c:\bme\prog2\beugro05\vektor.cpp
+	"vektor.h"
+

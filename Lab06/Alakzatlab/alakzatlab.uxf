@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.4">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>150</x>
+      <y>40</y>
+      <w>240</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>/Alakzat/
+--
+- p0: Pont
+- sz: Szin
+--
++ Alakzat(Pont&amp;, Szin&amp;)
++ getp0(): Pont;
++ getsz(): Szin;
++ mozgat(): void
+/+ rajzol(): void/
+/+ ~Alakzat()/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>290</x>
+      <y>280</y>
+      <w>230</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Szakasz
+--
+- pv: Pont
+--
++ Szakasz(Pont&amp;, Pont&amp;, Szin&amp;)
++ Szakasz(Pont&amp;, int, int, Szin&amp;)
++ getpv(): Pont;
++ Rajzol(): void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>40</x>
+      <y>280</y>
+      <w>230</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Kor
+--
+- r: int
+--
++ Kor(Pont&amp;, int,  Szin&amp;)
++ getr(): int;
++ Rajzol(): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>120</x>
+      <y>180</y>
+      <w>150</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>130;30;30;100</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>260</x>
+      <y>180</y>
+      <w>160</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>30;30;140;100</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>540</x>
+      <y>40</y>
+      <w>230</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Pont
+--
++ x: int
++ y: int
+--
++ Pont(int, int)
++ operator+=(Pont): Pont&amp;
++ operator-(Pont): Pont</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>360</x>
+      <y>50</y>
+      <w>200</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>30;30;180;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>490</x>
+      <y>130</y>
+      <w>180</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>30;180;160;180;160;30</additional_attributes>
+  </element>
+</diagram>

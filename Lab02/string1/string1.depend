@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1487057248 source:c:\bme\prog2\lab02\string1\memtrace.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	<ctype.h>
+	"memtrace.h"
+
+1487057248 c:\bme\prog2\lab02\string1\memtrace.h
+	<new>
+	<stdlib.h>
+	<iostream>
+	<fstream>
+
+1487057248 source:c:\bme\prog2\lab02\string1\string1_main.c
+	<stdio.h>
+	"memtrace.h"
+	"string1.h"
+
+1487059819 c:\bme\prog2\lab02\string1\string1.h
+
+1487059810 source:c:\bme\prog2\lab02\string1\string1.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	"memtrace.h"
+	"string1.h"
+

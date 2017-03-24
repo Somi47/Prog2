@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1488130659 source:c:\bme\prog2\hftest02\main.cpp
+	<iostream>
+	<stdio.h>
+	<math.h>
+

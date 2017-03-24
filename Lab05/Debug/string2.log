@@ -1,0 +1,15 @@
+﻿  rendez.cpp
+  Generating Code...
+  Compiling...
+  string2_test.cpp
+  string2.cpp
+c:\bme\prog2\lab05\string2.cpp(54): warning C4018: '<': signed/unsigned mismatch
+c:\bme\prog2\lab05\string2.cpp(69): warning C4018: '<': signed/unsigned mismatch
+c:\bme\prog2\lab05\string2.cpp(88): warning C4018: '<': signed/unsigned mismatch
+c:\bme\prog2\lab05\string2.cpp(102): warning C4018: '>=': signed/unsigned mismatch
+c:\bme\prog2\lab05\string2.cpp(110): warning C4018: '>=': signed/unsigned mismatch
+c:\bme\prog2\lab05\string2.cpp(124): warning C4018: '<': signed/unsigned mismatch
+c:\bme\prog2\lab05\string2.cpp(130): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  string2.vcxproj -> C:\BME\Prog2\Lab05\Debug\string2.exe
+  string2.vcxproj -> C:\BME\Prog2\Lab05\Debug\string2.pdb (Partial PDB)

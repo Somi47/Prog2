@@ -1,0 +1,5 @@
+﻿  nem_oo_teszt.cpp
+c:\bme\prog2\beugro03\beugro03\nem_oo_teszt.cpp(103): error C2653: 'memtrace': is not a class or namespace name
+c:\bme\prog2\beugro03\beugro03\nem_oo_teszt.cpp(103): error C3861: 'mem_dump': identifier not found
+c:\bme\prog2\beugro03\beugro03\nem_oo_teszt.cpp(108): error C2653: 'memtrace': is not a class or namespace name
+c:\bme\prog2\beugro03\beugro03\nem_oo_teszt.cpp(108): error C3861: 'mem_dump': identifier not found

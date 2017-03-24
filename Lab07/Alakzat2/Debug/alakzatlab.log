@@ -1,0 +1,4 @@
+﻿  poligon.cpp
+c:\bme\prog2\lab07\alakzat2\poligon.h(28): warning C4018: '<': signed/unsigned mismatch
+  alakzatlab.vcxproj -> C:\BME\Prog2\Lab07\Debug\alakzatlab.exe
+  alakzatlab.vcxproj -> C:\BME\Prog2\Lab07\Debug\alakzatlab.pdb (Partial PDB)

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1488271505 source:c:\bme\prog2\hftest06\main.cpp
+	<iostream>
+	<stdio.h>
+	<string>
+
