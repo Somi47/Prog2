@@ -6,3 +6,5 @@
 *.vs*
 *.vcxproj.filters
 *.tlog
+*.idb
+*.ilk
