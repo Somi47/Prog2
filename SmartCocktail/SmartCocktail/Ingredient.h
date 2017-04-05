@@ -5,17 +5,25 @@
 
 class Ingredient
 {
+// No copy allowed:
+	Ingredient( Ingredient &other ) {};
+protected:
 	std::string m_strName;
-	std::string m_strUnit;
-	int         m_iQuatity;
+	int         m_iQuantity;
 public:
-	Ingredient( std::string strName, std::string strUnit );
+	Ingredient();
 	virtual ~Ingredient();
+	virtual Ingredient *Clone() const = 0;
 
-	virtual double GetPrice() = 0;
-	virtual double GetAlcoholPercent() = 0 { return 0.0; }
-	
-	int GetQuatnity();
+	virtual std::string GetUnit()           const = 0;
+	virtual double      GetVolume()         const = 0;
+	virtual double      GetAlcoholPercent() const = 0;
+
+	void        SetName( const std::string &strName );
+	std::string GetName() const;
+
+	void SetQuantity( const int &iQuantity );
+	int  GetQuantity() const;
 };
 
 #endif

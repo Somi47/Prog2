@@ -116,11 +116,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Alcohol.cpp" />
+    <ClCompile Include="Cocktail.cpp" />
+    <ClCompile Include="Ingredient.cpp" />
+    <ClCompile Include="Liquid.cpp" />
     <ClCompile Include="SmartCocktail.cpp" />
+    <ClCompile Include="Solid.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Alcohol.h" />
     <ClInclude Include="Cocktail.h" />
     <ClInclude Include="Ingredient.h" />
+    <ClInclude Include="Liquid.h" />
+    <ClInclude Include="Solid.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
