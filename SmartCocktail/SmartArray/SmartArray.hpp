@@ -21,6 +21,7 @@ public:
 	void InsertLast( const T& tObject );
 
 	T &GetPosition( int iPos );
+	void RemovePosition( int iPos );
 
 	      T &operator[]( int iIndex );
 	const T &operator[]( int iIndex ) const;
@@ -66,7 +67,7 @@ int SmartArray< T >::GetCount() const
 template <typename T>
 void SmartArray< T >::ReserveTotal( int iReserve )
 {
-	if( m_iReserved < iReserve )
+	if( iReserve < m_iReserved )
 		return;
 
 	m_iReserved = iReserve < 8 ? 8 : iReserve;
@@ -98,6 +99,18 @@ template <typename T>
 T &SmartArray< T >::GetPosition( int iPos )
 {
 	return operator[]( iPos );
+}
+
+template <typename T>
+void SmartArray< T >::RemovePosition( int iPos )
+{
+	if( iPos >= m_iCount )
+		throw std::out_of_range( "iIndex >= m_iCount" );
+
+	for( int i = iPos + 1; i < m_iCount; ++i )
+		m_pData[ i - 1 ] = m_pData[ i ];
+
+	--m_iCount;
 }
 
 template <typename T>

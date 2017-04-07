@@ -12,7 +12,14 @@ int main()
 	smInt.InsertLast( 3213 );
 	smInt.InsertLast( 54 );
 	smInt.InsertLast( 645 );
+	smInt.InsertLast( 312 );
+	smInt.InsertLast( 99 );
+	smInt.InsertLast( 77 );
 	smInt.InsertLast( 19 );
+
+	smInt.RemovePosition( 0 );
+	smInt.RemovePosition( 2 );
+	smInt.RemovePosition( smInt.GetCount() - 1 );
 
 	try
 	{
