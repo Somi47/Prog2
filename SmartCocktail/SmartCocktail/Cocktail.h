@@ -14,6 +14,14 @@ public:
 	Cocktail();
 	Cocktail( const Cocktail &other );
 	virtual ~Cocktail();
+
+	void        SetName( const std::string &strName );
+	std::string GetName() const;
+
+	void AddIngredient( Ingredient *pIngredient );
+	void DelIngredient( int iPos );
+
+	std::string GetDataString();
 };
 
 #endif // COCKTAIL_H

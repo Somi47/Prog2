@@ -3,6 +3,9 @@
 
 #include <string>
 
+#define INGREDIENT_DATA_SEPARATOR "\t"
+#define INGREDIENT_SEPARATOR      "\n"
+
 class Ingredient
 {
 // No copy allowed:
@@ -24,6 +27,8 @@ public:
 
 	void SetQuantity( const int &iQuantity );
 	int  GetQuantity() const;
+
+	virtual std::string GetDataString();
 };
 
 #endif

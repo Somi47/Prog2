@@ -8,6 +8,8 @@ class Solid : public Ingredient
 protected:
 	std::string m_strUnit;
 public:
+	Solid();
+
 	virtual Ingredient *Clone() const;
 
 	virtual std::string GetUnit()           const;
