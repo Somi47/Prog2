@@ -1,6 +1,8 @@
 #ifndef SMARTARRAY_H
 #define SMARTARRAY_H
 
+#include <stdexcept>
+
 template <typename T>
 class SmartArray
 {
@@ -48,7 +50,7 @@ SmartArray< T >::SmartArray( SmartArray &other )
 	, m_iCount( other.m_iCount )
 	, m_pData( new T[ other.m_iReserved ] )
 {
-	for( int i = 0; i < m_iSize; ++i )
+	for( int i = 0; i < m_iCount; ++i )
 		m_pData[ i ] = other.m_pData[ i ];
 }
 

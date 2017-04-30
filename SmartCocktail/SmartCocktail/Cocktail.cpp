@@ -1,5 +1,6 @@
 #include "Cocktail.h"
 #include "Ingredient.h"
+#include <string.h>
 
 Cocktail::Cocktail()
 	: m_strName( "No Name Set" )
@@ -56,7 +57,7 @@ double Cocktail::GetAlcoholPercent() const
 	for( int i = 0; i < m_arrIngredients.GetCount(); ++i )
 	{
 		Ingredient *pIngredient = m_arrIngredients[ i ];
-		if( std::strcmp( pIngredient->GetUnit().c_str(), "ml" ) == false )
+		if( strcmp( pIngredient->GetUnit().c_str(), "ml" ) == false )
 			continue;
 
 		iTotalVolumeInML   += pIngredient->GetQuantity();
