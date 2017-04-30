@@ -34,5 +34,18 @@ double Solid::GetAlcoholPercent() const
 
 void Solid::SetUnit( const std::string &strUnit )
 {
-	m_strUnit = m_strUnit;
+	m_strUnit = strUnit;
+}
+
+
+std::string Solid::GetDataString()
+{
+	std::string strData;
+	strData += "SOLID";
+	strData += INGREDIENT_DATA_SEPARATOR;
+	strData += Ingredient::GetDataString();
+	strData += INGREDIENT_DATA_SEPARATOR;
+	strData += m_strUnit;
+
+	return strData;
 }

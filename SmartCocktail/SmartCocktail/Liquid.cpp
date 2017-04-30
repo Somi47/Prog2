@@ -30,3 +30,13 @@ double Liquid::GetAlcoholPercent() const
 {
 	return 0.0;
 }
+
+std::string Liquid::GetDataString()
+{
+	std::string strData;
+	strData += "LIQUID";
+	strData += INGREDIENT_DATA_SEPARATOR;
+	strData += Ingredient::GetDataString();
+
+	return strData;
+}

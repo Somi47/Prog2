@@ -13,6 +13,8 @@ public:
 	virtual std::string GetUnit()           const;
 	virtual double      GetVolume()         const;
 	virtual double      GetAlcoholPercent() const;
+
+	virtual std::string GetDataString() override;
 };
 
 #endif

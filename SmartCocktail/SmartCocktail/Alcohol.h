@@ -13,6 +13,10 @@ public:
 	virtual Ingredient *Clone() const;
 
 	virtual double GetAlcoholPercent() const;
+
+	void SetAlcoholPercent( const double &dAlcoholPercent );
+
+	virtual std::string GetDataString() override;
 };
 
 #endif

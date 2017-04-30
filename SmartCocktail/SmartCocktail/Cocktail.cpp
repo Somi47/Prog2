@@ -49,7 +49,24 @@ void Cocktail::DelIngredient( int iPos )
 	}
 }
 
-std::string Cocktail::GetDataString()
+double Cocktail::GetAlcoholPercent() const
+{
+	int    iTotalVolumeInML   = 0;
+	double dAlcoholVolumeInML = 0;
+	for( int i = 0; i < m_arrIngredients.GetCount(); ++i )
+	{
+		Ingredient *pIngredient = m_arrIngredients[ i ];
+		if( std::strcmp( pIngredient->GetUnit().c_str(), "ml" ) == false )
+			continue;
+
+		iTotalVolumeInML   += pIngredient->GetQuantity();
+		dAlcoholVolumeInML += pIngredient->GetQuantity() * pIngredient->GetAlcoholPercent();
+	}
+
+	return dAlcoholVolumeInML / iTotalVolumeInML;
+}
+
+std::string Cocktail::GetDataString() const
 {
 	std::string strData = m_strName;
 	strData += "\n";

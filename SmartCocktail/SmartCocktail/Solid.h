@@ -17,6 +17,8 @@ public:
 	virtual double      GetAlcoholPercent() const;
 
 	void SetUnit( const std::string &strUnit );
+
+	virtual std::string GetDataString() override;
 };
 
 #endif

@@ -15,6 +15,7 @@ int main()
 	Alcohol *pTequila = new Alcohol();
 	pTequila->SetName( "Don Jacinto Tequila Silver" );
 	pTequila->SetQuantity( 4 );
+	pTequila->SetAlcoholPercent( 0.40 );
 	cocktailTest01.AddIngredient( pTequila );
 
 	Liquid *pOrangeJuice = new Liquid();
@@ -22,7 +23,14 @@ int main()
 	pOrangeJuice->SetQuantity( 15 );
 	cocktailTest01.AddIngredient( pOrangeJuice );
 
+	Solid *pOrangeSlice = new Solid();
+	pOrangeSlice->SetName( "Orange Slice" );
+	pOrangeSlice->SetQuantity( 1 );
+	pOrangeSlice->SetUnit( "piece" );
+	cocktailTest01.AddIngredient( pOrangeSlice );
+
 	cout << cocktailTest01.GetDataString() << endl;
+	cout << "Alcohol percent:" << cocktailTest01.GetAlcoholPercent() * 100 << "%" << endl;
 
 
 	return 0;

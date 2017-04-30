@@ -21,7 +21,9 @@ public:
 	void AddIngredient( Ingredient *pIngredient );
 	void DelIngredient( int iPos );
 
-	std::string GetDataString();
+	double GetAlcoholPercent() const;
+
+	std::string GetDataString() const;
 };
 
 #endif // COCKTAIL_H
