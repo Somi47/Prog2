@@ -1,6 +1,11 @@
 #include "Cocktail.h"
 #include "Ingredient.h"
+#include "Liquid.h"
+#include "Alcohol.h"
+#include "Solid.h"
 #include <string.h>
+#include <iostream>
+#include <sstream>
 
 Cocktail::Cocktail()
 	: m_strName( "No Name Set" )
@@ -57,7 +62,7 @@ double Cocktail::GetAlcoholPercent() const
 	for( int i = 0; i < m_arrIngredients.GetCount(); ++i )
 	{
 		Ingredient *pIngredient = m_arrIngredients[ i ];
-		if( strcmp( pIngredient->GetUnit().c_str(), "ml" ) == false )
+		if( strcmp( pIngredient->GetUnit().c_str(), "cl" ) != 0 )
 			continue;
 
 		iTotalVolumeInML   += pIngredient->GetQuantity();
@@ -67,16 +72,39 @@ double Cocktail::GetAlcoholPercent() const
 	return dAlcoholVolumeInML / iTotalVolumeInML;
 }
 
-std::string Cocktail::GetDataString() const
+void Cocktail::WriteData( std::ostream &os ) const
 {
-	std::string strData = m_strName;
-	strData += "\n";
+	os << m_strName << std::endl;
 
 	for (int i = 0; i < m_arrIngredients.GetCount(); ++i)
 	{
-		strData += m_arrIngredients[i]->GetDataString();
-		strData += INGREDIENT_SEPARATOR;
+		m_arrIngredients[i]->WriteData( os );
 	}
 
-	return strData;
+	os << "COCKTAIL_END" << std::endl;
+}
+
+void Cocktail::ReadData( std::istream &is )
+{
+	std::getline( is, m_strName );
+
+	std::string strData;
+	while( std::getline( is, strData ) )
+	{
+		if( strcmp( strData.c_str(), "COCKTAIL_END" ) == 0 )
+			break;
+
+		/**/ if( strcmp( strData.c_str(), "LIQUID" ) == 0 )
+			m_arrIngredients.InsertLast( new Liquid() );
+		else if( strcmp( strData.c_str(), "ALCOHOL" ) == 0 )
+			m_arrIngredients.InsertLast( new Alcohol() );
+		else if( strcmp( strData.c_str(), "SOLID" ) == 0 )
+			m_arrIngredients.InsertLast( new Solid() );
+		else
+			throw std::exception( "Not valid data stream" );
+
+		m_arrIngredients.GetPosition( m_arrIngredients.GetCount() - 1 )->ReadData( is );
+	}
+
+
 }

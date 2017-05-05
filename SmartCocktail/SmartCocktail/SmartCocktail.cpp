@@ -1,4 +1,6 @@
 #include <iostream>
+#include <sstream>
+#include "SmartArray.hpp"
 #include "Cocktail.h"
 #include "Ingredient.h"
 #include "Solid.h"
@@ -29,9 +31,16 @@ int main()
 	pOrangeSlice->SetUnit( "piece" );
 	cocktailTest01.AddIngredient( pOrangeSlice );
 
-	cout << cocktailTest01.GetDataString() << endl;
-	cout << "Alcohol percent:" << cocktailTest01.GetAlcoholPercent() * 100 << "%" << endl;
+	cocktailTest01.WriteData( cout );
+	cout << "Alcohol percent:" << cocktailTest01.GetAlcoholPercent() * 100 << "%" << endl << endl;
 
+
+	stringstream strstream;
+	cocktailTest01.WriteData( strstream );
+
+	Cocktail cocktailRead;
+	cocktailRead.ReadData( strstream );
+	cocktailRead.WriteData( cout );
 
 	return 0;
 }

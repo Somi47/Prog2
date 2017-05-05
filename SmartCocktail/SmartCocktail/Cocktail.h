@@ -23,7 +23,8 @@ public:
 
 	double GetAlcoholPercent() const;
 
-	std::string GetDataString() const;
+	void WriteData( std::ostream &os ) const;
+	void ReadData ( std::istream &is );
 };
 
 #endif // COCKTAIL_H

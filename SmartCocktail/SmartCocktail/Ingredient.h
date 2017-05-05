@@ -3,8 +3,7 @@
 
 #include <string>
 
-#define INGREDIENT_DATA_SEPARATOR "\t"
-#define INGREDIENT_SEPARATOR      "\n"
+#define INGREDIENT_DATA_SEPARATOR '\n'
 
 class Ingredient
 {
@@ -28,7 +27,8 @@ public:
 	void SetQuantity( const int &iQuantity );
 	int  GetQuantity() const;
 
-	virtual std::string GetDataString();
+	virtual void WriteData( std::ostream &os );
+	virtual void ReadData ( std::istream &is );
 };
 
 #endif

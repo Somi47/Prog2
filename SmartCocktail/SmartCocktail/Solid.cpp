@@ -37,15 +37,15 @@ void Solid::SetUnit( const std::string &strUnit )
 	m_strUnit = strUnit;
 }
 
-
-std::string Solid::GetDataString()
+void Solid::WriteData( std::ostream &os )
 {
-	std::string strData;
-	strData += "SOLID";
-	strData += INGREDIENT_DATA_SEPARATOR;
-	strData += Ingredient::GetDataString();
-	strData += INGREDIENT_DATA_SEPARATOR;
-	strData += m_strUnit;
+	os << "SOLID" << std::endl;
+	Ingredient::WriteData( os );
+	os << m_strUnit << std::endl;
+}
 
-	return strData;
+void Solid::ReadData( std::istream &is )
+{
+	Ingredient::ReadData( is );
+	std::getline( is, m_strUnit );
 }

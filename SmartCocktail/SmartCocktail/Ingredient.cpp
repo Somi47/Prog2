@@ -30,13 +30,15 @@ int Ingredient::GetQuantity() const
 	return m_iQuantity;
 }
 
-
-std::string Ingredient::GetDataString()
+void Ingredient::WriteData( std::ostream &os )
 {
-	std::string strData;
-	strData += m_strName;
-	strData += INGREDIENT_DATA_SEPARATOR;
-	strData += std::to_string( m_iQuantity );
+	os << m_strName << std::endl;
+	os << m_iQuantity << std::endl;
+}
 
-	return strData;
+void Ingredient::ReadData( std::istream &is )
+{
+	std::getline( is, m_strName );
+	is >> m_iQuantity;
+	is.ignore( 1 );
 }

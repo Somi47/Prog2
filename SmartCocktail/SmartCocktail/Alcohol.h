@@ -16,7 +16,8 @@ public:
 
 	void SetAlcoholPercent( const double &dAlcoholPercent );
 
-	virtual std::string GetDataString() override;
+	virtual void WriteData( std::ostream &os ) override;
+	virtual void ReadData ( std::istream &is ) override;
 };
 
 #endif

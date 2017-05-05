@@ -27,14 +27,16 @@ void Alcohol::SetAlcoholPercent( const double &dAlcoholPercent )
 	m_dAlcoholPercent = dAlcoholPercent;
 }
 
-std::string Alcohol::GetDataString()
+void Alcohol::WriteData( std::ostream &os )
 {
-	std::string strData;
-	strData += "ALCOHOL";
-	strData += INGREDIENT_DATA_SEPARATOR;
-	strData += Ingredient::GetDataString();
-	strData += INGREDIENT_DATA_SEPARATOR;
-	strData += std::to_string( m_dAlcoholPercent );
+	os << "ALCOHOL" << std::endl;
+	Ingredient::WriteData( os );
+	os << m_dAlcoholPercent << std::endl;
+}
 
-	return strData;
+void Alcohol::ReadData( std::istream &is )
+{
+	Liquid::ReadData( is );
+	is >> m_dAlcoholPercent;
+	is.ignore( 1 );
 }
