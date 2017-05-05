@@ -1,0 +1,19 @@
+Tequila Sunrise
+ALCOHOL
+Don Jacinto Tequila Silver
+4
+0.4
+LIQUID
+Orange Juice
+15
+SOLID
+Orange Slice
+1
+piece
+COCKTAIL_END
+Pure Vodka
+ALCOHOL
+Sky Vodka
+4
+0.4
+COCKTAIL_END
