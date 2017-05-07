@@ -32,13 +32,15 @@ int Ingredient::GetQuantity() const
 
 void Ingredient::WriteData( std::ostream &os )
 {
-	os << m_strName << std::endl;
-	os << m_iQuantity << std::endl;
+	os << "Name: " << m_strName << std::endl;
+	os << "Quantity: " << m_iQuantity << std::endl;
 }
 
 void Ingredient::ReadData( std::istream &is )
 {
+	is.ignore( 6 );
 	std::getline( is, m_strName );
+	is.ignore( 10 );
 	is >> m_iQuantity;
 	is.ignore( 1 );
 }

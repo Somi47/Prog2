@@ -57,11 +57,12 @@ void Solid::WriteData( std::ostream &os )
 {
 	os << "SOLID" << std::endl;
 	Ingredient::WriteData( os );
-	os << m_strUnit << std::endl;
+	os << "Unit: " << m_strUnit << std::endl;
 }
 
 void Solid::ReadData( std::istream &is )
 {
 	Ingredient::ReadData( is );
+	is.ignore( 6 );
 	std::getline( is, m_strUnit );
 }

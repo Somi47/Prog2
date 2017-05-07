@@ -2,8 +2,7 @@
 #define INGREDIENT_H
 
 #include <string>
-
-#define INGREDIENT_DATA_SEPARATOR '\n'
+#include <iostream>
 
 class Ingredient
 {

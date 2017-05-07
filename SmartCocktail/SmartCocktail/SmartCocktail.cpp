@@ -70,27 +70,37 @@ void load_cocktails()
 
 void menu_dialog()
 {
+#ifndef CPORTA
 	system( "cls" );
+#endif 
 	cout << "SmartCocktail" << endl << endl;
 
 	cout << "0. Exit" << endl;
 	cout << "1. List existing cocktails" << endl;
-	cout << "2. Edit cocktail" << endl;
-	cout << "3. Add cocktail" << endl;
-	cout << "4. Delete cocktail" << endl;
-	cout << "5. Save" << endl;
+	cout << "2. Filter existing cocktails" << endl;
+	cout << "3. Edit cocktail" << endl;
+	cout << "4. Add cocktail" << endl;
+	cout << "5. Delete cocktail" << endl;
+	cout << "6. Save" << endl;
 
 	cout << endl;
 }
 
-void list()
+template< class Predi >
+void list( Predi cmp )
 {
+#ifndef CPORTA
 	system( "cls" );
+#endif 
 
 	for( int i = 0; i < g_parrCocktail->GetCount(); ++i )
 	{
+		Cocktail *pCocktail = g_parrCocktail->GetPosition( i );
+		if( cmp( pCocktail ) == false )
+			continue;
+
 		cout << i + 1 << ". ";
-		cout << g_parrCocktail->GetPosition( i )->GetName() << endl;
+		cout << pCocktail->GetName() << endl;
 	}
 
 	cout << endl << endl;
@@ -102,7 +112,7 @@ void list()
 	{
 		cin >> iChoice;
 
-		if( iChoice == 0 )
+		if( iChoice <= 0 )
 		{
 			return;
 		}
@@ -114,6 +124,46 @@ void list()
 				cout << endl;
 			}
 		}
+	}
+}
+
+void filter()
+{
+#ifndef CPORTA
+	system( "cls" );
+#endif 
+
+	cout << "0. Exit" << endl;
+	cout << "1. List alcohol percent above" << endl;
+	cout << "2. List alcohol percent below" << endl;
+	cout << "3. List ingredient count above" << endl;
+	cout << "4. List ingredient count below" << endl;
+
+	int iChoice;
+	cin >> iChoice;
+
+	if( iChoice <= 0 || iChoice > 4 )
+		return;
+
+	if( iChoice <= 2 ) // Alcohol percent
+	{
+		double dPercent;
+		cout << "Alchol percent(0.1 means 10%): ";
+		cin >> dPercent;
+		if( iChoice == 1 )
+			list( FuncCocktailAlcoholAbove( dPercent ) );
+		else
+			list( FuncCocktailAlcoholBelow( dPercent ) );
+	}
+	else
+	{
+		int iCount;
+		cout << "Count: ";
+		cin >> iCount;
+		if( iChoice == 3 )
+			list( FuncCocktailIngredientAbove( iCount ) );
+		else
+			list( FuncCocktailIngredientBelow( iCount ) );
 	}
 }
 
@@ -131,7 +181,7 @@ void duplicate_ingredient( Cocktail *pCocktail )
 
 	int iIngredientChoice;
 	cin >> iIngredientChoice;
-	if( iIngredientChoice == 0 )
+	if( iIngredientChoice <= 0 )
 		return;
 
 	if( iIngredientChoice > pCocktail->GetIngredientCount() )
@@ -144,7 +194,9 @@ void add_ingredient( Cocktail *pCocktail )
 {
 	while( true )
 	{
+#ifndef CPORTA
 		system( "cls" );
+#endif 
 		cout << "0. To Exit" << endl;
 		cout << "1. To Add Liquid ingredient" << endl;
 		cout << "2. To Add Alcohol ingredient" << endl;
@@ -181,7 +233,7 @@ void delete_ingredient( Cocktail *pCocktail )
 
 	int iIngredientChoice;
 	cin >> iIngredientChoice;
-	if( iIngredientChoice == 0 )
+	if( iIngredientChoice <= 0 )
 		return;
 
 	if( iIngredientChoice > pCocktail->GetIngredientCount() )
@@ -192,7 +244,9 @@ void delete_ingredient( Cocktail *pCocktail )
 
 void edit()
 {
+#ifndef CPORTA
 	system( "cls" );
+#endif 
 
 	for( int i = 0; i < g_parrCocktail->GetCount(); ++i )
 	{
@@ -206,16 +260,17 @@ void edit()
 
 	int iCocktailChoice;
 	cin >> iCocktailChoice;
-	if( iCocktailChoice == 0 )
+	if( iCocktailChoice <= 0 )
 		return;
 
 	if( iCocktailChoice - 1 >= g_parrCocktail->GetCount() )
 		return;
 
-
 	while( true )
 	{
+#ifndef CPORTA
 		system( "cls" );
+#endif 
 		cout << "0. To Exit" << endl;
 		cout << "1. To Add ingredient" << endl;
 		cout << "2. To Delete ingredient" << endl;
@@ -272,7 +327,9 @@ void save()
 
 void delete_cocktail()
 {
+#ifndef CPORTA
 	system( "cls" );
+#endif 
 
 	for( int i = 0; i < g_parrCocktail->GetCount(); ++i )
 	{
@@ -286,7 +343,7 @@ void delete_cocktail()
 
 	int iCocktailChoice;
 	cin >> iCocktailChoice;
-	if( iCocktailChoice == 0 )
+	if( iCocktailChoice <= 0 )
 		return;
 
 	if( iCocktailChoice - 1 >= g_parrCocktail->GetCount() )
@@ -305,15 +362,15 @@ void run()
 	while( true )
 	{
 		cin >> iChoice;
-
 		switch( iChoice )
 		{
 			case 0: return;
-			case 1: list(); break;
-			case 2: edit(); break;
-			case 3: add_cocktail(); break;
-			case 4: delete_cocktail(); break;
-			case 5: save(); break;
+			case 1: list( FuncCocktailAll() ); break;
+			case 2: filter(); break;
+			case 3: edit(); break;
+			case 4: add_cocktail(); break;
+			case 5: delete_cocktail(); break;
+			case 6: save(); break;
 
 			default:
 				break;
@@ -328,7 +385,7 @@ int main()
 	SmartArray<Cocktail *> arrCocktail;
 	g_parrCocktail = &arrCocktail;
 
-	load_cocktails();
+	load_cocktails(); 
 	run();
 
 	for( int i = 0; i < arrCocktail.GetCount(); ++i )

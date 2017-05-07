@@ -2,6 +2,7 @@
 #define COCKTAIL_H
 
 #include <string>
+#include <iostream>
 #include "SmartArray.hpp"
 
 class Ingredient;
@@ -27,6 +28,48 @@ public:
 
 	void WriteData( std::ostream &os ) const;
 	void ReadData ( std::istream &is );
+};
+
+
+///////////////
+// Functors: //
+///////////////
+class FuncCocktailAll
+{
+public:
+	bool operator()( Cocktail * ) { return true; }
+};
+
+struct FuncCocktailAlcoholAbove
+{
+	double m_dAlcoholPercent;
+public:
+	FuncCocktailAlcoholAbove( double dAlcoholPercent ) : m_dAlcoholPercent( dAlcoholPercent ) {}
+	bool operator()( Cocktail *pCocktail ) { return pCocktail->GetAlcoholPercent() > m_dAlcoholPercent; }
+};
+
+struct FuncCocktailAlcoholBelow
+{
+	double m_dAlcoholPercent;
+public:
+	FuncCocktailAlcoholBelow( double dAlcoholPercent ) : m_dAlcoholPercent( dAlcoholPercent ) {}
+	bool operator()( Cocktail *pCocktail ) { return pCocktail->GetAlcoholPercent() < m_dAlcoholPercent; }
+};
+
+struct FuncCocktailIngredientAbove
+{
+	int m_iCount;
+public:
+	FuncCocktailIngredientAbove( int iCount ) : m_iCount( iCount ) {}
+	bool operator()( Cocktail *pCocktail ) { return pCocktail->GetIngredientCount() > m_iCount; }
+};
+
+struct FuncCocktailIngredientBelow
+{
+	int m_iCount;
+public:
+	FuncCocktailIngredientBelow( int iCount ) : m_iCount( iCount ) {}
+	bool operator()( Cocktail *pCocktail ) { return pCocktail->GetIngredientCount() < m_iCount; }
 };
 
 #endif // COCKTAIL_H

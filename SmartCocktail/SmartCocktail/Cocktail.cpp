@@ -6,6 +6,7 @@
 #include <string.h>
 #include <iostream>
 #include <sstream>
+#include <stdexcept>
 
 Cocktail::Cocktail()
 	: m_strName( "No Name Set" )
@@ -114,7 +115,7 @@ void Cocktail::ReadData( std::istream &is )
 		else if( strcmp( strData.c_str(), "SOLID" ) == 0 )
 			m_arrIngredients.InsertLast( new Solid() );
 		else
-			throw std::exception( "Not valid data stream" );
+			throw std::runtime_error( "Not valid data stream" );
 
 		m_arrIngredients.GetPosition( m_arrIngredients.GetCount() - 1 )->ReadData( is );
 	}

@@ -1,32 +1,49 @@
 Tequila Sunrise
 ALCOHOL
-Don Jacinto Tequila Silver
-4
-0.4
+Name: Don Jacinto Silver
+Quantity: 4
+Vol: 0.4
 LIQUID
-Orange Juice
-15
+Name: Orange Juice
+Quantity: 20
 SOLID
-Orange Slice
-1
-piece
+Name: Grapefruit Slice
+Quantity: 1
+Unit: piece
+SOLID
+Name: Ice Cube
+Quantity: 2
+Unit: piece
 LIQUID
-Kutya
-10
+Name: Grapefruit Syrup
+Quantity: 1
 COCKTAIL_END
-Pure Vodka
+Pina Colada
 ALCOHOL
-Sky Vodka
-4
-0.4
+Name: White Rum
+Quantity: 4
+Vol: 0.38
+LIQUID
+Name: Coconut Milk
+Quantity: 2
+LIQUID
+Name: Pineapple Juice
+Quantity: 10
+LIQUID
+Name: Cream
+Quantity: 2
+SOLID
+Name: Ice Cube
+Quantity: 2
+Unit: piece
 COCKTAIL_END
-Sor
+Vodka Martini
 ALCOHOL
-Sor
-50
-0.05
+Name: Vodka
+Quantity: 6
+Vol: 0.4
 ALCOHOL
-Meg tobb s”r
-10
-0.05
+Name: Sweet Vermout
+Quantity: 1
+Vol: 0.16
 COCKTAIL_END

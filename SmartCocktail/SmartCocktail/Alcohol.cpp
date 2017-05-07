@@ -46,12 +46,13 @@ void Alcohol::WriteData( std::ostream &os )
 {
 	os << "ALCOHOL" << std::endl;
 	Ingredient::WriteData( os );
-	os << m_dAlcoholPercent << std::endl;
+	os << "Vol: " << m_dAlcoholPercent << std::endl;
 }
 
 void Alcohol::ReadData( std::istream &is )
 {
 	Liquid::ReadData( is );
+	is.ignore( 5 );
 	is >> m_dAlcoholPercent;
 	is.ignore( 1 );
 }
