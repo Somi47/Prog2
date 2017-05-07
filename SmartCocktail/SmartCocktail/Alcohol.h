@@ -11,6 +11,7 @@ public:
 	Alcohol();
 
 	virtual Ingredient *Clone() const;
+	static Alcohol *Create( std::ostream &os, std::istream &is );
 
 	virtual double GetAlcoholPercent() const;
 

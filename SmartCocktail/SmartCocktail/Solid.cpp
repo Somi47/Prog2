@@ -17,6 +17,22 @@ Ingredient *Solid::Clone() const
 	return SolidClone;
 }
 
+Solid *Solid::Create( std::ostream &os, std::istream &is )
+{
+	Solid *pSolid = new Solid();
+
+	os << "Name: ";
+	is.ignore();
+	getline( is, pSolid->m_strName );
+	os << "Quantity: ";
+	is >> pSolid->m_iQuantity;
+	os << "Unit: ";
+	is.ignore();
+	getline( is, pSolid->m_strUnit );
+
+	return pSolid;
+}
+
 std::string Solid::GetUnit() const
 {
 	return m_strUnit;

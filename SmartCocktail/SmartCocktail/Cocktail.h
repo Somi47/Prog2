@@ -18,8 +18,10 @@ public:
 	void        SetName( const std::string &strName );
 	std::string GetName() const;
 
-	void AddIngredient( Ingredient *pIngredient );
-	void DelIngredient( int iPos );
+	void        AddIngredient( Ingredient *pIngredient );
+	void        DelIngredient( int iPos );
+	Ingredient *GetIngredient( int iPos );
+	int         GetIngredientCount();
 
 	double GetAlcoholPercent() const;
 

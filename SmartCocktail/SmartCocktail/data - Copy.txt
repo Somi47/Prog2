@@ -10,23 +10,10 @@ SOLID
 Orange Slice
 1
 piece
-LIQUID
-Kutya
-10
 COCKTAIL_END
 Pure Vodka
 ALCOHOL
 Sky Vodka
 4
 0.4
-COCKTAIL_END
-Sor
-ALCOHOL
-Sor
-50
-0.05
-ALCOHOL
-Meg tobb s”r
-10
-0.05
 COCKTAIL_END

@@ -11,7 +11,7 @@
 
 using namespace std;
 
-SmartArray<Cocktail *> *g_arrCocktail;
+SmartArray<Cocktail *> *g_parrCocktail;
 
 void test()
 {
@@ -62,7 +62,7 @@ void load_cocktails()
 		Cocktail *pCocktail = new Cocktail();
 		pCocktail->ReadData( f );
 
-		g_arrCocktail->InsertLast( pCocktail );
+		g_parrCocktail->InsertLast( pCocktail );
 	}
 
 	f.close();
@@ -74,9 +74,11 @@ void menu_dialog()
 	cout << "SmartCocktail" << endl << endl;
 
 	cout << "0. Exit" << endl;
-	cout << "1. List exixting cocktails" << endl;
-	cout << "2. Add cocktail" << endl;
-	cout << "3. Save" << endl;
+	cout << "1. List existing cocktails" << endl;
+	cout << "2. Edit cocktail" << endl;
+	cout << "3. Add cocktail" << endl;
+	cout << "4. Delete cocktail" << endl;
+	cout << "5. Save" << endl;
 
 	cout << endl;
 }
@@ -85,10 +87,10 @@ void list()
 {
 	system( "cls" );
 
-	for( int i = 0; i < g_arrCocktail->GetCount(); ++i )
+	for( int i = 0; i < g_parrCocktail->GetCount(); ++i )
 	{
 		cout << i + 1 << ". ";
-		cout << g_arrCocktail->GetPosition( i )->GetName() << endl;
+		cout << g_parrCocktail->GetPosition( i )->GetName() << endl;
 	}
 
 	cout << endl << endl;
@@ -106,11 +108,194 @@ void list()
 		}
 		else
 		{
-			if( iChoice - 1 < g_arrCocktail->GetCount() )
-				g_arrCocktail->GetPosition( iChoice - 1 )->WriteData( cout );
+			if( iChoice - 1 < g_parrCocktail->GetCount() )
+			{
+				g_parrCocktail->GetPosition( iChoice - 1 )->WriteData( cout );
+				cout << endl;
+			}
 		}
 	}
 }
+
+void duplicate_ingredient( Cocktail *pCocktail )
+{
+	for( int i = 0; i < pCocktail->GetIngredientCount(); ++i )
+	{
+		cout << i + 1 << ". ";
+		cout << pCocktail->GetIngredient( i )->GetName() << endl;
+	}
+
+	cout << endl << endl;
+	cout << "0. To Exit" << endl;
+	cout << "#. To Duplicate ingredient" << endl;
+
+	int iIngredientChoice;
+	cin >> iIngredientChoice;
+	if( iIngredientChoice == 0 )
+		return;
+
+	if( iIngredientChoice > pCocktail->GetIngredientCount() )
+		return;
+
+	pCocktail->AddIngredient( pCocktail->GetIngredient( iIngredientChoice - 1 )->Clone() );
+}
+
+void add_ingredient( Cocktail *pCocktail )
+{
+	while( true )
+	{
+		system( "cls" );
+		cout << "0. To Exit" << endl;
+		cout << "1. To Add Liquid ingredient" << endl;
+		cout << "2. To Add Alcohol ingredient" << endl;
+		cout << "3. To Add Solid ingredient" << endl;
+		cout << "4. To Duplicate existing ingredient" << endl;
+
+		int iModeChoice;
+		cin >> iModeChoice;
+		switch( iModeChoice )
+		{
+		case 0: return;
+		case 1: pCocktail->AddIngredient( Liquid:: Create( cout, cin ) ); break;
+		case 2: pCocktail->AddIngredient( Alcohol::Create( cout, cin ) ); break;
+		case 3: pCocktail->AddIngredient( Solid::  Create( cout, cin ) ); break;
+		case 4: duplicate_ingredient( pCocktail ); break;
+
+		default:
+			break;
+		}
+	}
+}
+
+void delete_ingredient( Cocktail *pCocktail )
+{
+	for( int i = 0; i < pCocktail->GetIngredientCount(); ++i )
+	{
+		cout << i + 1 << ". ";
+		cout << pCocktail->GetIngredient( i )->GetName() << endl;
+	}
+
+	cout << endl << endl;
+	cout << "0. To Exit" << endl;
+	cout << "#. To Delete ingredient" << endl;
+
+	int iIngredientChoice;
+	cin >> iIngredientChoice;
+	if( iIngredientChoice == 0 )
+		return;
+
+	if( iIngredientChoice > pCocktail->GetIngredientCount() )
+		return;
+
+	pCocktail->DelIngredient( iIngredientChoice - 1 );
+}
+
+void edit()
+{
+	system( "cls" );
+
+	for( int i = 0; i < g_parrCocktail->GetCount(); ++i )
+	{
+		cout << i + 1 << ". ";
+		cout << g_parrCocktail->GetPosition( i )->GetName() << endl;
+	}
+
+	cout << endl << endl;
+	cout << "0. To Exit" << endl;
+	cout << "#. To Edit cocktail" << endl;
+
+	int iCocktailChoice;
+	cin >> iCocktailChoice;
+	if( iCocktailChoice == 0 )
+		return;
+
+	if( iCocktailChoice - 1 >= g_parrCocktail->GetCount() )
+		return;
+
+
+	while( true )
+	{
+		system( "cls" );
+		cout << "0. To Exit" << endl;
+		cout << "1. To Add ingredient" << endl;
+		cout << "2. To Delete ingredient" << endl;
+
+		int iModeChoice;
+		cin >> iModeChoice;
+		switch( iModeChoice )
+		{
+		case 0: return;
+		case 1: add_ingredient( g_parrCocktail->GetPosition( iCocktailChoice - 1 ) ); break;
+		case 2: delete_ingredient( g_parrCocktail->GetPosition( iCocktailChoice - 1 ) ); break;
+
+		default:
+			break;
+		}
+	}
+}
+
+void add_cocktail()
+{
+	Cocktail *pCocktail = new Cocktail();
+	g_parrCocktail->InsertLast( pCocktail );
+
+	string strName;
+	cout << "Name: ";
+	cin >> strName;
+
+	pCocktail->SetName( strName );
+
+	add_ingredient( pCocktail );
+}
+
+void save()
+{
+	ofstream f( "data.txt" );
+
+	if( f.fail() )
+	{
+		cerr << "Failed to open" << endl;
+		return;
+	}
+
+	for( int i = 0; i < g_parrCocktail->GetCount() - 1; ++i )
+	{
+		g_parrCocktail->GetPosition( i )->WriteData( f );
+		f << endl;
+	}
+
+	g_parrCocktail->GetPosition( g_parrCocktail->GetCount() - 1 )->WriteData( f );
+
+	f.close();
+}
+
+
+void delete_cocktail()
+{
+	system( "cls" );
+
+	for( int i = 0; i < g_parrCocktail->GetCount(); ++i )
+	{
+		cout << i + 1 << ". ";
+		cout << g_parrCocktail->GetPosition( i )->GetName() << endl;
+	}
+
+	cout << endl << endl;
+	cout << "0. To Exit" << endl;
+	cout << "#. To Edit cocktail" << endl;
+
+	int iCocktailChoice;
+	cin >> iCocktailChoice;
+	if( iCocktailChoice == 0 )
+		return;
+
+	if( iCocktailChoice - 1 >= g_parrCocktail->GetCount() )
+		return;
+
+	delete g_parrCocktail->GetPosition( iCocktailChoice - 1 );
+	g_parrCocktail->RemovePosition( iCocktailChoice - 1 );
+}
+
 
 void run()
 {
@@ -125,6 +310,10 @@ void run()
 		{
 			case 0: return;
 			case 1: list(); break;
+			case 2: edit(); break;
+			case 3: add_cocktail(); break;
+			case 4: delete_cocktail(); break;
+			case 5: save(); break;
 
 			default:
 				break;
@@ -137,7 +326,7 @@ void run()
 int main()
 {
 	SmartArray<Cocktail *> arrCocktail;
-	g_arrCocktail = &arrCocktail;
+	g_parrCocktail = &arrCocktail;
 
 	load_cocktails();
 	run();

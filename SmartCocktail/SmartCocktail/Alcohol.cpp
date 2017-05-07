@@ -17,6 +17,21 @@ Ingredient *Alcohol::Clone() const
 	return AlcoholClone;
 }
 
+Alcohol *Alcohol::Create( std::ostream &os, std::istream &is )
+{
+	Alcohol *pAlcohol = new Alcohol();
+
+	os << "Name: ";
+	is.ignore();
+	std::getline( is, pAlcohol->m_strName );
+	os << "Quantity in cl: ";
+	is >> pAlcohol->m_iQuantity;
+	os << "Alcohol content (0.4 means 40%%): ";
+	is >> pAlcohol->m_dAlcoholPercent;
+
+	return pAlcohol;
+}
+
 double Alcohol::GetAlcoholPercent() const
 {
 	return m_dAlcoholPercent;

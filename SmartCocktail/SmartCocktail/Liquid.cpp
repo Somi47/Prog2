@@ -15,6 +15,18 @@ Ingredient *Liquid::Clone() const
 	return LiquidClone;
 }
 
+Liquid *Liquid::Create( std::ostream &os, std::istream &is )
+{
+	Liquid *pLiquid = new Liquid();
+
+	os << "Name: ";
+	is.ignore();
+	getline( is, pLiquid->m_strName );
+	os << "Quantity in cl: ";
+	is >> pLiquid->m_iQuantity;
+
+	return pLiquid;
+}
 
 std::string Liquid::GetUnit() const
 {

@@ -9,6 +9,7 @@ public:
 	Liquid();
 
 	virtual Ingredient *Clone() const;
+	static  Liquid *Create( std::ostream &os, std::istream &is );
 
 	virtual std::string GetUnit()           const;
 	virtual double      GetVolume()         const;

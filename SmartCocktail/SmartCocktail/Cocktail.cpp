@@ -55,6 +55,19 @@ void Cocktail::DelIngredient( int iPos )
 	}
 }
 
+Ingredient *Cocktail::GetIngredient( int iPos )
+{
+	if( iPos >= m_arrIngredients.GetCount() )
+		return NULL;
+
+	return m_arrIngredients.GetPosition( iPos );
+}
+
+int Cocktail::GetIngredientCount()
+{
+	return m_arrIngredients.GetCount();
+}
+
 double Cocktail::GetAlcoholPercent() const
 {
 	int    iTotalVolumeInML   = 0;
@@ -81,7 +94,7 @@ void Cocktail::WriteData( std::ostream &os ) const
 		m_arrIngredients[i]->WriteData( os );
 	}
 
-	os << "COCKTAIL_END" << std::endl;
+	os << "COCKTAIL_END";
 }
 
 void Cocktail::ReadData( std::istream &is )
